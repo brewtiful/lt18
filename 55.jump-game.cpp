@@ -37,20 +37,17 @@
  * 
  * 
  */
+// why init with n-2 doesn't work?
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
 	int n = nums.size();
-        vector<int> dp(n);
-        dp[n-1] = 1;
-        for (int i = n-2; i >= 0; i--) {
-                for (int j = 1; j <= nums[i]; j++) {
-                        if (i+j < n && dp[i+j]) {
-                                dp[i] = 1;
-				break;
-                        }
-                }
+	int goodPosition = n-1;
+        for (int i = n-1; i >= 0; i--) {
+		if (i+nums[i] >= goodPosition) {
+			goodPosition = i;
+		}
         }
-        return dp[0] == 1;        
+        return goodPosition == 0;        
     }
 };
