@@ -37,7 +37,6 @@
  * 
  * 
  */
-// why init with n-2 doesn't work?
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
